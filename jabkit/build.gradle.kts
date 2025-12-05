@@ -63,7 +63,7 @@ javaModuleTesting.whitebox(testing.suites["test"]) {
 }
 
 application {
-    mainClass.set("org.jabref.toolkit.JabKit")
+    mainClass.set("org.jabref.toolkit.JabKitLauncher")
     mainModule.set("org.jabref.jabkit")
 
     // Also passed to launcher by java-module-packaging plugin
@@ -85,6 +85,7 @@ application {
 javaModulePackaging {
     applicationName = "jabkit"
     addModules.add("jdk.incubator.vector")
+    jlinkOptions.addAll("--generate-cds-archive")
 
     // All targets have to have "app-image" as sole target, since we do not distribute an installer
     targetsWithOs("windows") {
